@@ -52,8 +52,5 @@
     "support": {
         "issues": "https://github.com/teqnogen/units/issues",
         "source": "https://github.com/teqnogen/units"
-    },
-    "provide": {
-        "teqnogen/units": "1.0.0"
     }
 }
