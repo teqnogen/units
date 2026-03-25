@@ -52,4 +52,21 @@ class UnitConverter
 
         cache()->forget("units_$type");
     }
+
+    public function getUnits(?string $unit = null)
+    {
+        return Unit::when($unit, function ($query) use ($unit) {
+                    $query->where(function ($q) use ($unit) {
+                        $q->where('name', 'LIKE', "%{$unit}%")
+                        ->orWhere('symbol', 'LIKE', "%{$unit}%");
+                    });
+                })->get();
+    }
+
+    public function getTypes(?string $type = null)
+    {
+        return UnitType::when($type, function ($query) use ($type) {
+                    $query->where('name', 'LIKE', "%{$type}%");
+                })->get();
+    }
 }
